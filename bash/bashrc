@@ -1,0 +1,90 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+###################################################################################################
+# Sourcing module files
+function _source_if_exists {
+    if [[ -f $1 ]]; then . $1; fi;
+}
+
+_source_if_exists ${HOME}/.syscfg/sh-txtmodes.sh;      # Importing Dim, Bold, etc
+_source_if_exists ${HOME}/.syscfg/colors.8bit.sh;      # Importing setf-colors
+_source_if_exists ${HOME}/.syscfg/colors.32bit.sh;     # Importing setaf-colors
+_source_if_exists ${HOME}/.syscfg/aliases.sh;          # Declaring useful shortcuts for commands
+
+unset _source_if_exists;                               # Removing method for sourcing files
+
+###################################################################################################
+# Configuring prompt as user@host:path#
+if [[ ! -z fgCyan32 ]] && [[ ! -z fgWhite32 ]] && [[ ! -z fgYellow32 ]];
+then
+    PS1='\[${fgCyan32}\]\u@\h\[${fgWhite32}\]:\[${fgYellow32}\]\w\[${fgWhite32}\]# ';
+
+elif [[ ! -z fgCyan8 ]] && [[ ! -z fgWhite8 ]] && [[ ! -z fgYellow8 ]];
+then
+    PS1='\[${fgCyan8}\]\u@\h\[${fgWhite8}\]:\[${fgYellow8}\]\w\[${fgWhite8}\]# ';
+
+else
+    # If no colors are defined, leave out the host for readability
+    PS1='\u:\w# ';
+fi;
+
+export PS1;
+export PS2='#';
+
+###################################################################################################
+# Appending custom directories to $PATH
+function _append_to_path_if_exists {
+    if [[ -d $1 ]]; then export PATH=${PATH}:$1; fi;
+}
+
+_append_to_path_if_exists ${HOME}/bin;                 # Installed programs
+_append_to_path_if_exists ${HOME}/.syscfg/script;      # Environment configuration
+
+unset _append_to_path_if_exists;                       # Removing function for appending
+
+###################################################################################################
+# Exporting Misc Variables
+export VISUAL="vi"                                     # Set vim as the default editor
+export EDITOR="vim"                                    # Set vim as the default editor
+export SHELL="/bin/bash"                               # Set bash as preferred shell
+
+###################################################################################################
+# Setting XDG_HOME-Directories
+export XDG_CONFIG_HOME=${HOME}/.syscfg/xdg/config/     # XDG Config Directory
+export XDG_CACHE_HOME=${HOME}/.syscfg/xdg/cache/       # XDG Cache Directory
+export XDG_DATA_HOME=${HOME}/.syscfg/xdg/share         # Platform independent (= shared)
+# export XDG_RUNTIME_DIR=
+# export XDG_DATA_DIRS=
+# export XDG_CONFIG_DIRS=
+
+# export XDG_DESKTOP_DIR=
+export XDG_DOCUMENTS_DIR=${HOME}/doc/
+export XDG_DOWNLOAD_DIR=${HOME}/dl/
+export XDG_MUSIC_DIR=${HOME}/media/music/
+export XDG_PICTURES_DIR=${HOME}/media/pic/
+export XDG_VIDEOS_DIR=${HOME}/media/video/
+export XDG_PUBLICSHARE_DIR=${HOME}/pub/
+export XDG_TEMPLATES_DIR=${HOME}/doc/template/
+
+# Workaround for VS Code to find dotnet core
+export DOTNET_ROOT=/usr/share/dotnet/
+export MSBuildSDKsPath=${DOTNET_ROOT}/sdk/$(${DOTNET_ROOT}/dotnet --version)/Sdks/
+export PATH=$PATH:${DOTNET_ROOT}
+
+# Set up GO (lang) environment
+export GOPATH=$HOME/.golang
+
+# Setting various bash specific variables and options
+export HISTCONTROL=ignoreboth
+export HISTSIZE=1000
+export HISTFILESIZE=2000
+
+shopt -s autocd                                        # Enter directory by only typing its name
+shopt -s histappend                                    # append to the history file, don't overwrite it
+shopt -s checkwinsize                                  # check the window size after each command
+shopt -s globstar                                      # ** expands to * + all subdirs

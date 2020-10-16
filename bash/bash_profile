@@ -1,0 +1,15 @@
+#
+# ~/.bash_profile
+#
+
+# An interactive login shell features everthing of a general interactive
+# shell
+if [[ -f ~/.bashrc ]]; then . ~/.bashrc; fi;
+
+# If available, showing a fortune on login
+if [[ -x "$(command -v fortune)" && -x "$(command -v boxes)" ]];
+then
+    printf "${fgGreen32}"
+    fortune | boxes -d parchment;
+    echo ""
+fi;    

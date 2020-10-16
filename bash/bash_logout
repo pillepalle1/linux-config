@@ -1,0 +1,6 @@
+#
+# ~/.bash_logout
+#
+
+rm ${HOME}/.wget-hsts
+rm ${HOME}/.lesshst
