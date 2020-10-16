@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/benj/clients/mtcapital/ctyun/.billing'
+let g:netrw_dirhist_2='/home/benj/doc/tutorials/docker'
+let g:netrw_dirhist_1='/home/benj/clients/agentjs/src/dotnet-dev'
+let g:netrw_dirhist_0='/home/benj/clients/agentjs/docker/database/tables'
+let g:netrw_dirhist_9='/home/benj/doc/tutorials/docker/kodekloud.com'
+let g:netrw_dirhist_8='/home/benj/doc/mtcapital/ctyun/PCZ/M9'
+let g:netrw_dirhist_7='/home/benj/doc/mtcapital/ctyun/TSHS/Sebastian/203.176.88.35'
+let g:netrw_dirhist_6='/home/benj/doc/mtcapital/ctyun/.unassigned/140.249.178.121'
+let g:netrw_dirhist_5='/home/benj/doc/mtcapital/htdocs-public/asus-setup'
+let g:netrw_dirhist_4='/home/benj/doc/mtcapital/ctyun'
