@@ -1,0 +1,10 @@
+[Unit]
+Description=My Private Telegram Bot
+
+[Service]
+WorkingDirectory=/home/benj/telegram-bots/mptb/
+ExecStart=dotnet /home/benj/telegram-bots/mptb/mptb.exe
+Restart=always
+RestartSec=15
+User=benj
+SendSIGKILL=yes

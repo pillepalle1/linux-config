@@ -1,0 +1,21 @@
+* ArchLinux
+
+** Installation
+
+   > pacman -S shadowsocks-libev
+
+** Der Server wird gestartet ueber
+
+  > systemctl enable shadowsocks-libev@server
+  > systemctl start shadowsocks-lib@server
+
+** Der Client wird gestartet ueber
+
+  > systemctl enable shadowsocks-libev@client
+  > systemctl start shadowsocks-libev@client
+
+  Anschliessend wird ueber das Programm
+
+  > proxychains <bin>
+
+  ein Programm angewiesen den Netzwerkverkehr ueber den Proxy laufen zu lassen
