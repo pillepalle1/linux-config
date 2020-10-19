@@ -1,0 +1,8 @@
+nitrogen --set-scaled ~/media/pic/wallpaper/half-life-rust.jpg
+
+clipmenud &
+sxhkd &
+dunst &
+picom &
+
+exec dwm
