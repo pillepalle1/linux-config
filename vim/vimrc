@@ -54,9 +54,3 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
-
-" Configuring and loading plugins
-"   :help load-plugins
-let g:clang_complete_auto=1
-let g:clang_complete_copen=1
-let g:clang_library_path='/lib'
