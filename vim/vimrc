@@ -33,6 +33,7 @@ cnoreabbrev w!! w !sudo tee > /dev/null %|
 
 " Configuring syntax highlighting
 colorscheme termschool
+highlight Normal guibg=NONE ctermbg=NONE
 syntax on
 
 " Configuring the crosshair
