@@ -6,6 +6,17 @@
 [[ $- != *i* ]] && return
 
 ###################################################################################################
+# Setting various bash specific variables and options
+shopt -s autocd                                        # Enter directory by only typing its name
+shopt -s histappend                                    # append to the history file, don't overwrite it
+shopt -s checkwinsize                                  # check the window size after each command
+shopt -s globstar                                      # ** expands to * + all subdirs
+
+export HISTCONTROL=ignoreboth
+export HISTSIZE=1000
+export HISTFILESIZE=2000
+
+###################################################################################################
 # Sourcing module files
 function _source_if_exists {
     if [[ -f $1 ]]; then . $1; fi;
@@ -62,7 +73,7 @@ export XDG_DATA_HOME=${HOME}/.syscfg/xdg/share         # Platform independent (=
 # export XDG_DATA_DIRS=
 # export XDG_CONFIG_DIRS=
 
-# export XDG_DESKTOP_DIR=
+export XDG_DESKTOP_DIR=${HOME}/desktop/
 export XDG_DOCUMENTS_DIR=${HOME}/doc/
 export XDG_DOWNLOAD_DIR=${HOME}/dl/
 export XDG_MUSIC_DIR=${HOME}/media/music/
@@ -77,14 +88,5 @@ export MSBuildSDKsPath=${DOTNET_ROOT}/sdk/$(${DOTNET_ROOT}/dotnet --version)/Sdk
 export PATH=$PATH:${DOTNET_ROOT}
 
 # Set up GO (lang) environment
-export GOPATH=$HOME/.golang
+export GOPATH=${HOME}/.golang
 
-# Setting various bash specific variables and options
-export HISTCONTROL=ignoreboth
-export HISTSIZE=1000
-export HISTFILESIZE=2000
-
-shopt -s autocd                                        # Enter directory by only typing its name
-shopt -s histappend                                    # append to the history file, don't overwrite it
-shopt -s checkwinsize                                  # check the window size after each command
-shopt -s globstar                                      # ** expands to * + all subdirs
